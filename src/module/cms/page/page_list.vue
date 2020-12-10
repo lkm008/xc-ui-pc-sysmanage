@@ -1,6 +1,19 @@
 <template>
     <div>
       <el-button type="primary" v-on:click="query" size="small">查询</el-button>
+      <!--查询表单-->
+      <el-form :model="params">
+        <el-select v-model="params.siteId" placeholder="请选择站点">
+          <el-option
+            v-for="item in siteList"
+            :key="item.siteId"
+            :label="item.siteName"
+            :value="item.siteId">
+          </el-option>
+        </el-select>
+        页面别名：<el-input v-model="params.pageAliase"  style="width: 100px"></el-input>
+        <el-button type="primary" v-on:click="query"  size="small">查询</el-button>
+      </el-form>
       <el-table
         :data="list"
         stripe
@@ -12,6 +25,7 @@
         <el-table-column prop="pageWebPath" label="访问路径" width="250"></el-table-column>
         <el-table-column prop="pagePhysicalPath" label="物理路径" width="250"></el-table-column>
         <el-table-column prop="pageCreateTime" label="创建时间" width="180"></el-table-column>
+        <el-table-column prop="siteId" label="站点id" width="180"></el-table-column>
       </el-table>
       <el-pagination
         layout="prev, pager, next"
@@ -27,11 +41,14 @@
   export default {
     data() {
       return {
+        siteList:[],//站点列表
         list:[],
         total:50,
         params:{
+          siteId:'',
+          pageAliase:'',
           page:1,//页码
-          size:2//每页显示个数
+          size:5//每页显示个数
         }
       }
     },
@@ -50,9 +67,24 @@
         })
       }
     },
-    created() {
+  /*  created() {
       //默认查询页面
       this.query()
+    },*/
+    mounted() {
+      //默认查询页面
+      this.query()
+      //初始化站点列表
+      this.siteList = [
+        {
+          siteId:'5a751fab6abb5044e0d19ea1',
+          siteName:'门户主站'
+        },
+        {
+          siteId:'102',
+          siteName:'测试站'
+        }
+      ]
     }
 
   }
