@@ -9,3 +9,8 @@ export const page_list = (page,size,params) => {
   let query = querystring.stringify(params)
   return http.requestQuickGet(apiUrl+'/cms/page/list/'+page+'/'+size+'/?'+query)
 }
+
+/*页面添加*/
+export const page_add = params => {
+  return http.requestPost(apiUrl+'/cms/page/add',params)
+}
