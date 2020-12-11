@@ -1,6 +1,6 @@
 <template>
     <div>
-      <el-button type="primary" v-on:click="query" size="small">查询</el-button>
+<!--      <el-button type="primary" v-on:click="query" size="small">查询</el-button>-->
       <!--查询表单-->
       <el-form :model="params">
         <el-select v-model="params.siteId" placeholder="请选择站点">
@@ -12,6 +12,12 @@
           </el-option>
         </el-select>
         页面别名：<el-input v-model="params.pageAliase"  style="width: 100px"></el-input>
+        页面名称：<el-input v-model="params.pageName"  style="width: 100px"></el-input>
+<!--        页面类型：<el-input v-model="params.pageType"  style="width: 100px"></el-input>-->
+        页面类型：<el-radio-group v-model="params.pageType">
+                    <el-radio class="radio" label="0">静态</el-radio>
+                    <el-radio class="radio" label="1">动态</el-radio>
+                </el-radio-group>
         <el-button type="primary" v-on:click="query"  size="small">查询</el-button>
         <router-link class="mui-tab-item" :to="{path:'/cms/page/add/',query:{page: this.params.page,siteId: this.params.siteId}}">
           <el-button  type="primary" size="small">新增页面</el-button>
@@ -62,6 +68,8 @@
         params:{
           siteId:'',
           pageAliase:'',
+          pageName: '',
+          pageType: '',
           page:1,//页码
           size:5//每页显示个数
         }
