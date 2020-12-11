@@ -14,3 +14,13 @@ export const page_list = (page,size,params) => {
 export const page_add = params => {
   return http.requestPost(apiUrl+'/cms/page/add',params)
 }
+
+/*页面查询*/
+export const page_get = id => {
+  return http.requestQuickGet(apiUrl+'/cms/page/get/'+id)
+}
+
+/*页面修改，采用put方法*/
+export const page_edit = (id,params) => {
+  return http.requestPut(apiUrl+'/cms/page/edit/'+id,params)
+}
