@@ -29,3 +29,11 @@ export const page_edit = (id,params) => {
 export const page_del = id => {
   return http.requestDelete(apiUrl+'/cms/page/del/'+id)
 }
+/*模板查询*/
+export const template_list = () => {
+  return http.requestQuickGet(apiUrl+'/cms/template/findAll/')
+}
+/*模板查询*/
+export const site_list = () => {
+  return http.requestQuickGet(apiUrl+'/cms/site/findAll/')
+}
