@@ -27,6 +27,7 @@
                    :to="{path:'/cms/page/add/',query:{page: this.params.page,siteId: this.params.siteId}}">
         <el-button type="primary" size="small">新增页面</el-button>
       </router-link>
+
     </el-form>
     <el-table
       :data="list"
@@ -43,14 +44,9 @@
       <el-table-column prop="siteId" label="站点id" width="180"></el-table-column>
       <el-table-column label="操作" width="80">
         <template slot-scope="page">
-          <el-button
-            size="small" type="text"
-            @click="edit(page.row.pageId)">编辑
-          </el-button>
-          <el-button
-            size="small" type="text"
-            @click="del(page.row.pageId)">删除
-          </el-button>
+          <el-button size="small" type="text" @click="edit(page.row.pageId)">编辑</el-button>
+          <el-button size="small" type="text" @click="del(page.row.pageId)">删除</el-button>
+          <el-button @click="preview(page.row.pageId)" type="text" size="small">页面预览</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -125,6 +121,10 @@
           })
 
         })
+      },
+      //页面预览
+      preview(pageId){
+        window.open("http://www.xuecheng.com/cms/preview/"+pageId)
       },
     },
     created() {
