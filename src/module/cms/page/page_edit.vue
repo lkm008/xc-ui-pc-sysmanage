@@ -162,27 +162,18 @@
       },
       created:function(){
         //初始化站点列表
-       /* this.siteList = [
-          {
-            siteId:'5a751fab6abb5044e0d19ea1',
-            siteName:'门户主站'
-          },
-          {
-            siteId:'102',
-            siteName:'测试站'
+        cmsApi.site_list().then((res) => {
+          if (res.success) {
+            // this.siteList = JSON.parse(res.queryResult).list;
+            this.siteList =res.queryResult.list;
           }
-        ],
+        });
         //模板列表
-        this.templateList = [
-          {
-            templateId:'5a962b52b00ffc514038faf7',
-            templateName:'首页'
-          },
-          {
-            templateId:'5a962bf8b00ffc514038fafa',
-            templateName:'轮播图'
+        cmsApi.template_list().then((res) => {
+          if (res.success) {
+            this.templateList =res.queryResult.list;
           }
-        ],*/
+        });
           //页面参数通过路由传入，这里通过this.$route.params来获取
           this.pageId=this.$route.params.pageId;
         //根据主键查询页面信息
