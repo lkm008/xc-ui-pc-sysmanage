@@ -37,3 +37,7 @@ export const template_list = () => {
 export const site_list = () => {
   return http.requestQuickGet(apiUrl+'/cms/site/findAll/')
 }
+/*发布页面*/
+export const page_postPage= id => {
+  return http.requestPost(apiUrl+'/cms/page/postPage/'+id)
+}
