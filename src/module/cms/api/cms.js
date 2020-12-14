@@ -31,7 +31,10 @@ export const page_edit = (id,params) => {
 export const page_del = id => {
   return http.requestDelete(apiUrl+'/cms/page/del/'+id)
 }
-
+/*发布页面*/
+export const page_postPage= id => {
+  return http.requestPost(apiUrl+'/cms/page/postPage/'+id)
+}
 //#############################site##################################
 /*站点查询*/
 export const site_findAll = () => {
@@ -66,8 +69,28 @@ export const site_del = id => {
 export const template_findAll = () => {
   return http.requestQuickGet(apiUrl+'/cms/template/findAll/')
 }
-
-/*发布页面*/
-export const page_postPage= id => {
-  return http.requestPost(apiUrl+'/cms/page/postPage/'+id)
+export const template_list = (page,size,params) => {
+  //将json对象转成key/value对
+  let query = querystring.stringify(params)
+  return http.requestQuickGet(apiUrl+'/cms/template/list/'+page+'/'+size+'/?'+query)
 }
+/*站点添加*/
+export const template_add = params => {
+  return http.requestPost(apiUrl+'/cms/template/add',params)
+}
+
+/*站点查询*/
+export const template_get = id => {
+  return http.requestQuickGet(apiUrl+'/cms/template/get/'+id)
+}
+
+/*站点修改，采用put方法*/
+export const template_edit = (id,params) => {
+  return http.requestPut(apiUrl+'/cms/template/edit/'+id,params)
+}
+
+/*站点删除*/
+export const template_del = id => {
+  return http.requestDelete(apiUrl+'/cms/template/del/'+id)
+}
+
