@@ -162,14 +162,14 @@
       },
       created:function(){
         //初始化站点列表
-        cmsApi.site_list().then((res) => {
+        cmsApi.site_findAll().then((res) => {
           if (res.success) {
             // this.siteList = JSON.parse(res.queryResult).list;
             this.siteList =res.queryResult.list;
           }
         });
         //模板列表
-        cmsApi.template_list().then((res) => {
+        cmsApi.template_findAll().then((res) => {
           if (res.success) {
             this.templateList =res.queryResult.list;
           }

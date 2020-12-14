@@ -158,7 +158,7 @@
       this.query();
       //初始化站点列表
       //站点查询
-        cmsApi.site_list().then((res) => {
+        cmsApi.site_findAll().then((res) => {
             if (res.success) {
               // this.siteList = JSON.parse(res.queryResult).list;
               this.siteList =res.queryResult.list;
